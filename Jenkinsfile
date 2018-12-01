@@ -9,7 +9,7 @@ node('linux') {
   }
   stage('Deploy') {
     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'cef8ac76-7a74-4b42-8410-c4d38ec24e88', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-      s3Upload(file:'rectangle-16.jar', bucket:'assignment10-bucket', path:'/workspace/java-pipeline/dist/rectangle-16.jar')
+      sh("aws s3 cp /workspace/java-pipeline/dist/rectangle-17.jar s3://assignment10-bucket/")
     }
   }
   stage('Report') {
