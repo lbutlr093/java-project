@@ -8,7 +8,7 @@ node('linux') {
     sh 'ant -f build.xml -v'
   }
   stage() {
-    s3Upload(file:'/workspace/java-pipeline/dist/rectangle-4.jar', bucket:'assignment10-bucket', path:'http://assignment10-bucket.s3.amazonaws.com/rectangle.jar')  
+    s3Upload(file:'rectangle-5.jar', bucket:'assignment10-bucket', path:'http://assignment10-bucket.s3.amazonaws.com/rectangle.jar')  
   }
   
   stage('Results') {
