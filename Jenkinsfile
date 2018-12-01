@@ -7,6 +7,10 @@ node('linux') {
   stage('Build') {
     sh 'ant -f build.xml -v'
   }
+  stage() {
+    s3Upload(file:'/workspace/java-pipeline/dist/rectangle-4.jar', bucket:'assignment10-bucket', path:'http://assignment10-bucket.s3.amazonaws.com/rectangle.jar')  
+  }
+  
   stage('Results') {
     junit 'reports/*.xml'
   }
