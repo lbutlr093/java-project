@@ -8,9 +8,8 @@ node('linux') {
     sh 'ant -f build.xml -v'
   }
   stage() {
-    s3Upload(bucket:"assignment10-bucket", file:'rectangle-6.jar', path:'rectangle-6.jar')
+    s3Upload(file:'rectangle-7.jar', bucket:'assignment10-bucket', path:'/workspace/java-pipeline/dist/rectangle-7.jar')
   }
-  
   stage('Results') {
     junit 'reports/*.xml'
   }
