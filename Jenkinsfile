@@ -1,10 +1,11 @@
 node('linux') {
-  stage('Test') {
+  stage('Unit Tests') {
     git 'https://github.com/lbutlr093/java-project.git'
-    sh 'ant -buildfile test.xml'
+    sh 'ant -f test.xml -v'
+    junit 'reports/result.xml'
   }
   stage('Build') {
-    sh 'ant'
+    sh 'ant -f build.xml -v'
   }
   stage('Results') {
     junit 'reports/*.xml'
